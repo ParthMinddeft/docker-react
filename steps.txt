@@ -1,0 +1,19 @@
+docker build -t practice-image .
+docker image ls
+docker run --name practice-container --rm practice-image
+docker ps
+docker stop practice-container
+docker ps
+docker run --rm --name practice-container -d -p 3000(host machine port):3000(container port) practice-image
+docker ps
+docker stop practice-container
+docker ps
+docker run --rm --name practice-container -d -p 3000:3000 -v $(pwd):/app practice-image
+docker ps
+docker logs 3f84747e1a1e(container_id)
+docker ps
+docker exec -it 3f84747e1a1e bash
+ls
+exit
+does not work hot reload so you can try this command in terminal : docker run --rm --name practice-container -e CHOKIDAR_USEPOLLING=true -d -p 3000:3000 -v $(pwd):/app practice-image
+EXPOSE 3000
